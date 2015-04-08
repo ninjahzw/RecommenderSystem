@@ -1,2 +1,2 @@
-Training: filmtrust-ratings.txt, kFold: 5 [Parallel]
-RegSVD,0.779398,1.001666,0.222685,0.411455,0.01,-1.0,0.01,0.35,0.35,10,100,true,'00:01','00:00'
+Training: ...sk/hou/workspace/mldata/ratings.csv, kFold: 5 [Parallel]
+SVD++,0.710025,0.922452,0.157783,0.432357,0.01,-1.0,0.01,0.35,0.35,18,100,true,'31:15','00:00'

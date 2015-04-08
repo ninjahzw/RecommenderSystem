@@ -1,0 +1,2 @@
+Training: .../hou/workspace/ml-20m/ratings.small, kFold: 5 [Parallel]
+ItemKNN,0.836632,1.070175,0.185918,0.559437,,50,PCC,-1,'00:04','00:00'

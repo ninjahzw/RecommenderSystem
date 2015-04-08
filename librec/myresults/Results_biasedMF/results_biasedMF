@@ -1,0 +1,2 @@
+Training: ...sk/hou/workspace/ml-20m/ratings.csv, kFold: 5 [Parallel]
+BiasedMF,0.657759,0.857490,0.146169,0.361047,0.01,-1.0,0.01,0.35,0.35,10,100,true,'04:37','00:06'

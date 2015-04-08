@@ -1,0 +1,2 @@
+Training: ...sk/hou/workspace/mldata/ratings.csv, kFold: 5 [Parallel]
+ItemKNN,0.730687,0.953904,0.162375,0.471193,,50,COS,-1,'02:21','02:07'

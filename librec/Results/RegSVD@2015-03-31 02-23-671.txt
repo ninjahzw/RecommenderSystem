@@ -1,2 +1,0 @@
-Training: filmtrust-ratings.txt, kFold: 5 [Parallel]
-RegSVD,0.779398,1.001666,0.222685,0.411455,0.01,-1.0,0.01,0.35,0.35,10,100,true,'00:01','00:00'

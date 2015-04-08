@@ -7,3 +7,6 @@ cat $data_path/movies.dat | awk '{split($1,a,"::"); print a[1]}' | uniq > $data_
 # for user data
 cat $data_path/ratings.dat | awk '{split($1,a,"::"); print a[1]}' | uniq > $data_path/all_users
 echo "complete!"
+
+# make data as Librec recogonizable
+cat ratings.dat | awk '{split($1,a,"::"); print a[1],a[2],a[3]}' > ratings

@@ -1,0 +1,2 @@
+Training: ...sk/hou/workspace/mldata/ratings.csv, kFold: 5 [Parallel]
+BayesianPMF,0.771115,1.016375,0.171359,0.488357,10,100,'02:13','00:00'

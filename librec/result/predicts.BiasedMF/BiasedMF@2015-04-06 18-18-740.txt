@@ -1,0 +1,2 @@
+Training: ...sk/hou/workspace/mldata/ratings.csv, kFold: 5 [Singleton]
+BiasedMF,0.710019,0.922265,0.157782,0.432449,0.01,-1.0,0.01,0.35,0.35,10,100,true,'00:01','00:00'
