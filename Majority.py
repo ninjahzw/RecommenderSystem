@@ -43,7 +43,7 @@ class hybrid:
         total = 0
         num = 0
         for one in args:
-            print one
+            # print one
             total += float(one)
             num += 1
         avg = total/num
@@ -57,9 +57,9 @@ class hybrid:
         total = 0
         for one in pairs:
             total += one[-1]
-        print pairs
-        print total/len(pairs)
-        print '----------'
+        # print pairs
+        # print total/len(pairs)
+        # print '----------'
         return total/len(pairs)
       
 hybrid().majority_vote()
