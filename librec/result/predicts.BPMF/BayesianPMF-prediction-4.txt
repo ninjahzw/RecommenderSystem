@@ -1,4 +1,3 @@
-# userId itemId rating prediction
 1 6 2.0 3.6395006
 1 22 3.0 3.8012757
 1 164 3.0 3.2946973

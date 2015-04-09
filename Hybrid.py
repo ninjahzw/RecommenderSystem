@@ -4,6 +4,9 @@ class hybrid:
     def __init__(self):
         self.ItemKNN_file = "/disk/hou/workspace/RecommenderSystem/librec/result/predicts.ItemKNN/ItemKNN-prediction"
         self.Biased_MF_file = "/disk/hou/workspace/RecommenderSystem/librec/result/predicts.BiasedMF/BiasedMF-prediction"
+        self.UserKNN_file = "/disk/hou/workspace/RecommenderSystem/librec/result/predicts.UserKNN/UserKNN-prediction"
+        self.RegSVD_file = "/disk/hou/workspace/RecommenderSystem/librec/result/predicts.RegSVD/RegSVD-prediction"
+        self.BPMF_file = "/disk/hou/workspace/RecommenderSystem/librec/result/predicts.BPMF/BPMF-prediction"
         self.original = "/disk/hou/workspace/mldata/ratings.csv"
 
 
@@ -11,7 +14,7 @@ class hybrid:
         total_squired_diff = 0
         total_diff = 0
         total_items = 0
-        with open(self.ItemKNN_file) as ikf, open(self.Biased_MF_file) as bmf:
+        with open(self.BPMF_file) as ikf, open(self.RegSVD_file) as bmf:
             for line1, line2 in zip(ikf, bmf):
                 # the user, movie, and original information are same for two lines.
                 userid, movieid, origin_rating, predict1 = line1.split()
