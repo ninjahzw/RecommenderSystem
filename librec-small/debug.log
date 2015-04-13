@@ -1,0 +1,33 @@
+[INFO ] 2015-04-12 15:57:20,212 -- Training: /disk/hou/workspace/ml-10k/ratings, kFold: 5 [Parallel]
+[DEBUG] 2015-04-12 15:57:20,631 -- Dataset: {Users, Items, Ratings} = {79, 3521, 10073}, Scale = {0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0}
+[DEBUG] 2015-04-12 15:57:20,812 -- Fold [1]: training amount: 8058, test amount: 2015
+[DEBUG] 2015-04-12 15:57:20,828 -- Build item similarity matrix ...
+[DEBUG] 2015-04-12 15:57:20,835 -- Fold [2]: training amount: 8058, test amount: 2015
+[DEBUG] 2015-04-12 15:57:20,838 -- Build item similarity matrix ...
+[DEBUG] 2015-04-12 15:57:20,846 -- Fold [3]: training amount: 8059, test amount: 2014
+[DEBUG] 2015-04-12 15:57:20,856 -- Fold [4]: training amount: 8058, test amount: 2015
+[DEBUG] 2015-04-12 15:57:20,862 -- Build item similarity matrix ...
+[DEBUG] 2015-04-12 15:57:20,878 -- Build item similarity matrix ...
+[DEBUG] 2015-04-12 15:57:20,889 -- Fold [5]: training amount: 8059, test amount: 2014
+[DEBUG] 2015-04-12 15:57:20,892 -- Build item similarity matrix ...
+[DEBUG] 2015-04-12 15:57:37,061 -- ItemKNN: ,50,pcc,-1
+[DEBUG] 2015-04-12 15:57:37,064 -- ItemKNN fold [3] evaluate test data ... 
+[DEBUG] 2015-04-12 15:57:37,483 -- ItemKNN: ,50,pcc,-1
+[DEBUG] 2015-04-12 15:57:37,484 -- ItemKNN fold [5] evaluate test data ... 
+[DEBUG] 2015-04-12 15:57:38,246 -- ItemKNN: ,50,pcc,-1
+[DEBUG] 2015-04-12 15:57:38,247 -- ItemKNN fold [2] evaluate test data ... 
+[DEBUG] 2015-04-12 15:57:38,250 -- ItemKNN: ,50,pcc,-1
+[DEBUG] 2015-04-12 15:57:38,251 -- ItemKNN fold [4] evaluate test data ... 
+[DEBUG] 2015-04-12 15:57:38,314 -- ItemKNN: ,50,pcc,-1
+[DEBUG] 2015-04-12 15:57:38,314 -- ItemKNN fold [1] evaluate test data ... 
+[DEBUG] 2015-04-12 15:57:39,032 -- ItemKNN fold [3] has writeen rating prediction to Results/ItemKNN-prediction-3.txt
+[DEBUG] 2015-04-12 15:57:39,047 -- ItemKNN fold [3]: 0.861004,1.105475,0.191334,0.643850	Time: 00:16, 00:01	View: all
+[DEBUG] 2015-04-12 15:57:39,370 -- ItemKNN fold [5] has writeen rating prediction to Results/ItemKNN-prediction-5.txt
+[DEBUG] 2015-04-12 15:57:39,372 -- ItemKNN fold [5]: 0.869794,1.113140,0.193288,0.689199	Time: 00:16, 00:01	View: all
+[DEBUG] 2015-04-12 15:57:40,075 -- ItemKNN fold [2] has writeen rating prediction to Results/ItemKNN-prediction-2.txt
+[DEBUG] 2015-04-12 15:57:40,076 -- ItemKNN fold [2]: 0.861915,1.114401,0.191537,0.665737	Time: 00:17, 00:01	View: all
+[DEBUG] 2015-04-12 15:57:40,081 -- ItemKNN fold [1] has writeen rating prediction to Results/ItemKNN-prediction-1.txt
+[DEBUG] 2015-04-12 15:57:40,082 -- ItemKNN fold [1]: 0.849832,1.112436,0.188852,0.670886	Time: 00:17, 00:01	View: all
+[DEBUG] 2015-04-12 15:57:40,164 -- ItemKNN fold [4] has writeen rating prediction to Results/ItemKNN-prediction-4.txt
+[DEBUG] 2015-04-12 15:57:40,165 -- ItemKNN fold [4]: 0.853954,1.110136,0.189767,0.672149	Time: 00:17, 00:01	View: all
+[INFO ] 2015-04-12 15:57:40,168 -- ItemKNN,0.859300,1.111118,0.190956,0.668364,,50,pcc,-1,'00:17','00:01'

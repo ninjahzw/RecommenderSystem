@@ -1,0 +1,2 @@
+Training: ...sk/hou/workspace/mldata/ratings.csv, kFold: 5 [Parallel]
+RegSVD,0.807290,1.090426,0.179398,0.483491,0.005,-1.0,0.05,0.05,0.05,10,75,true,'00:01','00:00'

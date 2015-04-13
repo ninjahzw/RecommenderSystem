@@ -1,0 +1,2 @@
+Training: /disk/hou/workspace/ml-1m/ratings, kFold: 5 [Parallel]
+BayesianPMF,0.695719,0.896754,0.173930,0.486135,20,50,'11:18','00:00'

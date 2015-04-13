@@ -1,0 +1,2 @@
+Training: /disk/hou/workspace/ml-1m/ratings, kFold: 5 [Parallel]
+UserKNN,0.703247,0.905460,0.175812,0.544110,,80,pcc,25,'12:46','20:17'

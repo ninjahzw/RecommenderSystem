@@ -1,0 +1,2 @@
+Training: /disk/hou/workspace/ml-10k/ratings, kFold: 5 [Parallel]
+RegSVD,1.342824,1.770855,0.298405,1.002622,0.005,-1.0,0.05,0.05,0.05,10,50,true,'00:00','00:00'

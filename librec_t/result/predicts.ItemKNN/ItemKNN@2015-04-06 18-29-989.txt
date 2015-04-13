@@ -1,0 +1,2 @@
+Training: ...sk/hou/workspace/mldata/ratings.csv, kFold: 5 [Singleton]
+ItemKNN,0.718952,0.938007,0.159767,0.459600,,50,PCC,-1,'00:44','01:05'

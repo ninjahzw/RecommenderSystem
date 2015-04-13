@@ -1,0 +1,7 @@
+#!/bin/sh
+if [ "$1" == "" ]; then
+    echo "which algorithm?"
+fi
+java -Xms3g -Xmx10g -Xss256m -jar librec.jar -c my.conf
+#mv results.txt result/result.$1
+#mv Results result/predicts.$1
