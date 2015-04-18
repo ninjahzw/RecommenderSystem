@@ -2,11 +2,12 @@ import math, sys
 class predict_bias:
 
     def __init__(self, data):
-        self.ItemKNN_file = "/disk/hou/workspace/RecommenderSystem/" + data + "/result/predicts.ItemKNN/ItemKNN-prediction-moviepart1"
-        self.Biased_MF_file = "/disk/hou/workspace/RecommenderSystem/" + data + "/result/predicts.BiasedMF/BiasedMF-prediction-moviepart1"
-        self.UserKNN_file = "/disk/hou/workspace/RecommenderSystem/" + data + "/result/predicts.UserKNN/UserKNN-prediction-moviepart1"
-        self.RegSVD_file = "/disk/hou/workspace/RecommenderSystem/" + data + "/result/predicts.RegSVD/RegSVD-prediction-moviepart1"
-        self.BPMF_file = "/disk/hou/workspace/RecommenderSystem/" + data + "/result/predicts.BPMF/BPMF-prediction-moviepart1"
+        suffix = ""
+        self.ItemKNN_file = "/disk/hou/workspace/RecommenderSystem/" + data + "/result/predicts.ItemKNN/ItemKNN-prediction-movie" + suffix
+        self.Biased_MF_file = "/disk/hou/workspace/RecommenderSystem/" + data + "/result/predicts.BiasedMF/BiasedMF-prediction-movie" + suffix
+        self.UserKNN_file = "/disk/hou/workspace/RecommenderSystem/" + data + "/result/predicts.UserKNN/UserKNN-prediction-movie" + suffix
+        self.RegSVD_file = "/disk/hou/workspace/RecommenderSystem/" + data + "/result/predicts.RegSVD/RegSVD-prediction-movie" + suffix
+        self.BPMF_file = "/disk/hou/workspace/RecommenderSystem/" + data + "/result/predicts.BPMF/BPMF-prediction-movie" + suffix
 
         # number of ratings to remove when appmy Majority avg.
         self.ratings_remove = 2

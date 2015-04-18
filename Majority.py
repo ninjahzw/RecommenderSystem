@@ -2,12 +2,13 @@ import math, sys
 class hybrid:
 
     def __init__(self, data):
-        self.ItemKNN_file = "/disk/hou/workspace/RecommenderSystem/" + data + "/result/predicts.ItemKNN/ItemKNN-prediction"
-        self.Biased_MF_file = "/disk/hou/workspace/RecommenderSystem/" + data + "/result/predicts.BiasedMF/BiasedMF-prediction"
-        self.UserKNN_file = "/disk/hou/workspace/RecommenderSystem/" + data + "/result/predicts.UserKNN/UserKNN-prediction"
-        self.RegSVD_file = "/disk/hou/workspace/RecommenderSystem/" + data + "/result/predicts.RegSVD/RegSVD-prediction"
-        self.BPMF_file = "/disk/hou/workspace/RecommenderSystem/" + data + "/result/predicts.BPMF/BPMF-prediction"
-        self.bias = "predict_bias"
+        suffix = "-movie"
+        self.ItemKNN_file = "/disk/hou/workspace/RecommenderSystem/" + data + "/result/predicts.ItemKNN/ItemKNN-prediction" + suffix
+        self.Biased_MF_file = "/disk/hou/workspace/RecommenderSystem/" + data + "/result/predicts.BiasedMF/BiasedMF-prediction" + suffix
+        self.UserKNN_file = "/disk/hou/workspace/RecommenderSystem/" + data + "/result/predicts.UserKNN/UserKNN-prediction" + suffix
+        self.RegSVD_file = "/disk/hou/workspace/RecommenderSystem/" + data + "/result/predicts.RegSVD/RegSVD-prediction" + suffix
+        self.BPMF_file = "/disk/hou/workspace/RecommenderSystem/" + data + "/result/predicts.BPMF/BPMF-prediction" + suffix
+        self.bias = "predict_bias_1m_full"
         self.bias_map = {}
         with open(self.bias) as f:
             for line in f:
@@ -31,13 +32,14 @@ class hybrid:
                 predict3 = line3.split()[-1]
                 predict4 = line4.split()[-1]
                 predict5 = line5.split()[-1]
+                predictions = [float(predict1), float(predict2), float(predict3), float(predict4), float(predict5)]
                 # average = (float(predict1) + float(predict2)\
                 #        + float(predict3) + float(predict4) + float(predict5))/5.0
                 # change this function to apply different weighted average strategy.
-                predict = self.avg(predict1, predict2, predict3, predict4, predict5) 
+                predict = self.avg(predictions) 
                 if movieid in self.bias_map:
                     predict = predict - float(self.bias_map[movieid])
-                # print predict1, predict2, predict3, predict4, predict5
+                # print movieid, origin_rating, predict, predict1, predict2, predict3, predict4, predict5
                 # print movieid, origin_rating, predict
                 # predict = float(predict1)
                 # the distance from the predicted to the original.
@@ -50,6 +52,31 @@ class hybrid:
         MAE = total_diff/total_items
         RMSE = math.sqrt(total_squired_diff/total_items)
         print MAE, RMSE
+
+    """
+    For 5 stars ratings, all algorithms will always lower than the true rating
+    this method handle this edge problem by estimate if it is most probable to be a 5 rating, then make it to be 5.
+    """
+    def handle_edge(self, predictions):
+        count_upper = 0
+        count_lower = 0
+        # the threshold of rating is 5
+        threshold_upper = 4.5 
+        # if count is greater than this count then it will return upper
+        threshold_upper_count = 4
+        # threshold of rating is 0
+        threshold_lower = 1.0
+        threshold_lower_count = 4
+        for one in predictions:
+            if one > threshold_upper:
+                count_upper += 1
+            elif one < threshold_lower:
+                count_lower += 1
+        if count_upper >= threshold_upper_count:
+            return 4.6
+        elif count_lower >= threshold_lower_count:
+            return 0
+        return -1
 
     """
     calculate the overall average, and remove the 2 that are far away from the avg.
@@ -81,16 +108,19 @@ class hybrid:
         return total/len(pairs)
       
     def maj_avg_v3(self, *args):
-        threshold = 5
+        threshold = 1
         args = [float(one) for one in args]
+        # -- to use median as mid
+        #median = self.get_median(s_args)
+        # -- to use mean as mid
         s_args = sorted(args)
-        median = self.get_median(s_args)
+        mid = self.avg(*args) 
         start, end = s_args[0], s_args[-1]
-        if abs(start - median) > threshold:
+        if abs(start - mid) > threshold:
             index = 0
             while index < self.ratings_remove:
                 s_args.pop(0); index += 1
-        if abs(end - median) > threshold:
+        if abs(end - mid) > threshold:
             index = 0
             while index < self.ratings_remove:
                 s_args.pop(-1); index += 1
@@ -139,19 +169,19 @@ class hybrid:
         #return weight * self.diagonal()
         return weight * total/len(pairs) + (1-weight) * total_poped/len(poped)
    
-    """
-    Surprise, got 0.699989449999 0.903466663523 -best by far.
-    """
     def diagonal(self, *args):
         total = 0
         for one in args:
             total += float(one)**2
         return math.sqrt(total/5)
 
-    def avg(self, *args):
+    """
+    Surprise, got 0.699989449999 0.903466663523 -best by far.
+    """
+    def avg(self, args):
         total = 0
         for one in args:
-            total += float(one)
+            total += one
         return total/len(args)
 
     """
@@ -165,27 +195,21 @@ class hybrid:
     """
     def maj_avg_v2(self, *args):
         args = [float(one) for one in args]
-        total = 0
-        num = 0
-        for one in args:
-            # print one
-            total += one
-            num += 1
-        avg = total/num
-        s_args = sorted(args)
-        start, end = s_args[0], s_args[-1]
+        args.sort()
+        avg = self.get_median(args)
+        start, end = args[0], args[-1]
         if abs(start - avg) > abs(end - avg):
             index = 0
             while index < self.ratings_remove:
-                s_args.pop(0); index += 1
+                args.pop(0); index += 1
         elif abs(start - avg) < abs(end - avg):
             index = 0
             while index < self.ratings_remove:
-                s_args.pop(-1); index += 1
+                args.pop(-1); index += 1
         # calculate average again
         total = 0
         num = 0
-        for one in s_args:
+        for one in args:
             # print one
             total += float(one)
             num += 1
