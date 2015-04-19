@@ -17,7 +17,6 @@ class hybrid:
         # number of ratings to remove when appmy Majority avg.
         self.ratings_remove = 2
 
-
     def majority_vote(self):
         total_squired_diff = 0
         total_diff = 0
